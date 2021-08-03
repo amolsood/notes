@@ -7,4 +7,3 @@
 ## Exam Tips
 
 ### Samples
-
