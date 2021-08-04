@@ -2,7 +2,7 @@
 
 ## Points
 
-- S3 is global
+- S3 is global, but buckets are created in a specific region, but bucket names are in universal namespace
 - Object based Storage rather than file system or data blocks
   - Upload any type of files
   - Cannot be used to run DB or OS
@@ -77,6 +77,94 @@
 - Delete action on a version deletes that specific version of the object which cannot be restored (hard delete)
 - Delete action on the top level versioned object just adds a Delete marker (Basically creates a delete version of the object) (soft delete)
 - To Restore a deleted object, the delete marker itself can be deleted
+
+### Lifecycle management
+
+- Automates moving of objects between storage tiers for cost optimization
+- Can be used in conjunction with Versioning
+- Can be applied to current versions or previous versions
+- Minimum storage duration in days before transitioning (from creation of object)
+  - Standard-IA - 30 days
+  - Intelligent-Tiering - 30 days
+  - One Zone-IA - 30 days
+  - Glacier - 90 days
+  - Glacier Deep Archive - 180 days
+- Actions Available
+  - Transition current versions of object
+  - Transition previous versions of object
+  - Expire current versions
+  - Permanently delete previous versions
+- You cannot enable Delete expired object delete markers if you enable Expire current versions of objects.
+- [Supported Transitions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html)
+  - Encrypted objects remain encrypted throughout the storage class transition process.
+  - Objects that are stored in the S3 Glacier or S3 Glacier Deep Archive storage classes are not available in real time.
+  - Objects that are stored in the S3 Glacier storage class can only be transitioned to the S3 Glacier Deep Archive storage class.
+  - The transition of objects to the S3 Glacier Deep Archive storage class can go only one way.
+  - The objects that are stored in the S3 Glacier and S3 Glacier Deep Archive storage classes are visible and available only through Amazon S3. They are not available through the separate Amazon S3 Glacier service.
+
+### Object Lock
+
+- Use WORM model (Write Once Read Many). Prevents the object from deletion or modification from given time or indefinitely
+- Can be applied on individual object or across the bucket
+- Can be used for extra layer of protection for objects
+- Governance Mode
+  - Cannot overwrite or delete object versions or alter lock settings unless user has special permissions to do
+- Compliance Mode
+  - Cannot be overwritten or deleted by any user and retention mode and period cannot be changed, even by root account user
+- Retention Period - Protects the object from changes for a duration. S3 stores the timestamp in object's metadata which indicates retention period expiry
+- After retention period expires, the object can be changed unless there is **Legal Hold** on object version
+- Legal Hold - It can be freely placed and objects cannot be modified until user with permission **s3:PutObjectLegalhold** doesn't remove it
+- Glacier Vault Lock - WORM model to Glacier objects
+- Object Lock works only in versioned buckets. Enabling Object Lock automatically enables Bucket Versioning.
+- Object lock cannot be enabled after bucket is created
+
+### Encryption
+
+- Encryption in Transit
+  - SSL/TLS (Port 443)
+  - HTTPS
+- Encryption at Rest (Server-Side Encryption)
+  - *SSE-S3* - S3 managed keys, uses AES 256-bit encryption
+  - *SSE-KMS* - AWS Key Management Service-managed keys
+  - *SSE-C* - Customer Provided Keys
+- Encryption at Rest (Client-Side Encryption)
+  - Client responsible to encrypt before upload
+- Can be enforced
+  - Using Console
+  - Using Bucket Policy
+- **x-amz-server-side-encryption** - Request Header to be included for SSE
+  - x-amz-server-side-encryption: AES256
+  - x-amz-server-side-encryption: aws:kms
+
+### S3 Performance
+
+- Prefixes
+  - bucketname/folder1/subfolder1/file.jpg
+  - bucketname/folder2/subfolder1/file.jpg
+  - bucketname/folder3/file.jpg
+  - bucketname/folder4/subfolder4/file.jpg
+- 100-200ms latency
+- 3500 PUT/COPY/POST/DELETE requests and 5500 GET/HEAD requests per second, per prefix
+- The more the prefixes, the better the performance
+- Uploads - Multipart uploads are
+  - recommended for files over 100MB
+  - required for files over 5GB
+- Downloads - S3 Byte Range Fetches
+  - Parallel downloads by specifying byte-range (partial amount of files)
+
+### Limitations
+
+- KMS limits while SSE
+  - Uploading/downloading will count towards KMS Quota
+  - Quota cannot be increased
+  - Region specific, its either 5500, 10000, 30000 requests per second
+
+### Replication (Cross region replication)
+
+- Objects can be replicated from one bucket to another
+- The source and destination buckets must have versioning enabled
+- Existing objects are NOT automatically replicated when replication is turned on
+- Deleting individual versions or delete markers are not replicated by default, but can be turned on
 
 ## Exam Tips
 
