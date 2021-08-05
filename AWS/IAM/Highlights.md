@@ -30,3 +30,5 @@
 
 - IAM is universal (Global, not region specific)
 - No permission are granted initially when a new user is created
+
+## [CheatSheet](https://tutorialsdojo.com/aws-identity-and-access-management-iam/#validate-your-knowledge)
