@@ -45,7 +45,7 @@
   - Cheap Storage and very infrequent access to data
   - Used for long term data archiving
   - Pay for every access
-  - Default Retrieval Time - 1 minute to 12 hours
+  - Default Retrieval Time - 1 minute to 12 hours (3-5 hours as per Amazon [FAQ](https://aws.amazon.com/s3/glacier/faqs/))
   - Use Cases - Historical Data (Accessed few times a year)
 - Glacier Deep Archive (>=3AZ)
   - Cheap Storage and very infrequent access to data
@@ -76,7 +76,14 @@
 - The bucket policy does not apply to older versions of objects (Even public)
 - Delete action on a version deletes that specific version of the object which cannot be restored (hard delete)
 - Delete action on the top level versioned object just adds a Delete marker (Basically creates a delete version of the object) (soft delete)
+- Delete marker's version is set to `some_id` if versioning is enabled, file can be restored anytime by deleting the delete marker
 - To Restore a deleted object, the delete marker itself can be deleted
+- If versioning is suspended for a bucket, a DELETE request: [Read Here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectsfromVersioningSuspendedBuckets.html)
+  - Can only remove an object whose version ID is null.
+  - Doesn't remove anything if there isn't a null version of the object in the bucket.
+  - Inserts a delete marker into the bucket.
+  - Delete marker's version is set to `null` if versioning is suspended, file can be restored anytime by deleting the delete marker
+  - Even in a versioning-suspended bucket, the bucket owner can permanently delete a specified version. Only the bucket owner can delete a specified object version.
 
 ### Lifecycle management
 
@@ -176,11 +183,11 @@
 - URL - https://{{bucket_name}}.s3.{{region}}.amazonaws.com/{{object.exe}}
 - Unlimited Storage
 - Upto 5TB file size
-- Static Content - Use S3
+- Static Content - Use S3 (Websites)
 - Automatic Scaling
 - Key-Value store - Key - Object.exe, Value - Data of Object.exe
 - VersionID - Used to store multiple version of same object
-- Metadata - Data about data
+- Metadata - Data about data (content-type, last-modified, etc)
 - Characteristics
   - Tiered Storage
   - Lifecycle Management
@@ -190,6 +197,7 @@
   - Access Control Lists (Can be attached to individual objects)
   - Bucket Policies (Bucket Wide JSON Policies)
 - Buckets are private by default (Include all objects within)
+- Need to allow public access to bucket and its objects to make the bucket public
 - Object ACLs - Control permissions on individual objects
 - Bucket Policies - Control permission on entire bucket (Bucket Wide JSON Policies)
 - HTTP 200 status code on successful upload via CLI or API
