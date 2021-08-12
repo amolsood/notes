@@ -33,10 +33,35 @@
   - Can be purchased on demand
   - Can also be purchased as Reserved for upto 70% discount on on-demand
 
+### Security Groups
+
+- Virtual firewall for EC2 instances
+- Default access is restricted (blocked)
+- To let everything in: 0.0.0.0/0
+- For outside communication, open correct ports over HTTP/HTTPS/RDP/SSH
+- RDP and SSH not recommended due to possibility of Brute Force attack
+- Any number of instances can be launched in a security group
+- All inbound traffic is blocked by default
+- All outbound traffic is allowed
+- Multiple Security groups can be attached to an EC2 instance
+
+### BootStrap Scripts
+
+- Allows to run commands on EC2 instance boot
+- Increases boot time based on commands
+- Helps to automate installation of certain packages/applications
+- Changes to security group takes effect immediately
+- It passes user data to EC2 instance at boot time
+
 ## Exam Tips
 
 - Like a VM, hosted in AWS, grow and shrink capacity
 - On-demand, reserved, spot, dedicated hosts
+- Roles are preferred via EC2 rather than coded credentials from security perspective
+- Avoid hard coding aws credentials in EC2, use roles instead
+- Policies control a role's permissions
+- Any policy updates to the role take immediate effect
+- Roles can be attached or detached at EC2 runtime with immediate effect without stopping or terminate the instance
 
 ### Samples
 
