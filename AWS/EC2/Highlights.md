@@ -102,8 +102,8 @@
 - Any policy updates to the role take immediate effect
 - Roles can be attached or detached at EC2 runtime with immediate effect without stopping or terminate the instance
 - How to terminate spot instances - Cancel the spot request and terminate the related instance(s)
-- User-data - Used for bootstrap scripts
-- Mete-data - Data about EC2 instance. Bootstrap scripts can be used to access meta-data
+- User-data - Used for bootstrap scripts. It is not run automatically if EC2 instance is restarted. It runs one time only
+- Mete-data - Data about EC2 instance. Bootstrap scripts can be used to access meta-data. Url - 169.254.169.254
 
 ### Samples
 
