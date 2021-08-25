@@ -92,6 +92,40 @@
 - Available for Windows, Amazon 2 Linux AMI and Ubuntu
 - Instances can't be hibernated for more than 60 days
 
+### AMI (Amazon Machine Image)
+
+- A blueprint of an EC2 instance
+- Provides information required to launch an EC2 instance
+- Details
+  - Region
+  - OS (Operating system)
+  - Architecture (32-bit or 64-bit)
+  - Launch permissions
+  - Storage for root device (root device volume)
+- Backed by
+  - EBS - EC2 instances root device volume is an EBS volume and is created from EBS snapshot
+    - EBS-based instances **can be stopped**
+    - If instance is stopped, data will not be lost
+    - If instance is rebooted, data will not be lost
+    - Root device volume will be terminated when instance is terminated, by default
+    - Choose to keep the volume on instance termination
+  - Instance Store - EC2 instances root device volume is an instance of store volume and is created from template stored in S3
+    - Also called as Ephemeral Storage
+    - store-based instances **cannot be stopped**
+    - If underlying host fails, data will be lost
+    - If instance is rebooted, data will not be lost
+    - If instance is deleted, instance store volume will be lost
+
+### AWS Backup
+
+- Backup allows to consolidate backups across multiple AWS services such as EC2, EFS, EBS, FSx for Lustre, FSx for Windows and AWS Storage Gateway
+- Can also be used for DBs like RDS and DynamoDB
+- Can be used with with AWS Organizations to backup multiple AWS accounts in and organization
+- Benefits
+  - Central Management - central backup console
+  - Automation - automated backup schedules and retention policies. Allows to create lifecycle policies to expire unnecessary backups after certain period of time
+  - Improved Compliance - Backup policies can be enforced while backups can be encrypted both at rest and in-transit allowing alignment of regulatory compliance. Auditing is easy due to consolidated view of backups across many AWS services
+
 ## Exam Tips
 
 - Designed for Mission critical data
