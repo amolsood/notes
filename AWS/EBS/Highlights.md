@@ -79,6 +79,19 @@
 - Copying an un-encrypted snapshot allows encryption
 - Root device volumes can be encrypted upon creation
 
+### EC2 Hibernation
+
+- When EC2 instance is hibernated, the contents from RAM are stored in EBS volume
+- When EC2 instance is started from hibernation, the contents are restored from EBS volume to its previous state
+  - RAM contents are reloaded
+  - The processes that were running are resumed
+  - Previously attached volumes are reattached and instance retains its Instance ID
+- RAM must be less than 150GB to support EC2 hibernation
+- Instances which can be hibernated - C3, C4, C5, M3, M4, M5, R3, R4, R5
+- Available for on-demand and reserved instances
+- Available for Windows, Amazon 2 Linux AMI and Ubuntu
+- Instances can't be hibernated for more than 60 days
+
 ## Exam Tips
 
 - Designed for Mission critical data
