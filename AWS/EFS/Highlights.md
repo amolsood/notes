@@ -43,3 +43,9 @@
 - EFS - When you need distributes highly resilient storage for Linux instances
 - FSx for Windows - Centralized storage for Windows-based Applications, such as SharePoint, Microsoft SQL Server, Workspaces, IIS Web Server
 - FSx for Lustre - For AI and ML based, high-speed, high-capacity distributed storage, compute-intensive applications. This will be for applications that do high performance computing (HPC), financial modelling. FSx for Lustre can store data directly on S3
+
+### Samples
+
+- Mount to EC2 (refer to [mount.sh](./mount.sh))
+  - Format - sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport {efs-id}.efs.{region}.amazonaws.com:/ efs
+  - Example - sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-b6133102.efs.us-east-1.amazonaws.com:/ efs
