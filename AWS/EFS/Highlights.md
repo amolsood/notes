@@ -30,10 +30,9 @@
   - Infrequent Access requests
   - Provisioned Throughput - Most Expensive
 
-
 ## Exam Tips
 
-- Support NFSv4
+- Support NFSv4 (Linux)
 - pay per use
 - scale upto petabytes
 - can support 1000s of concurrent NFS connections
@@ -41,3 +40,6 @@
 - Read-after-write consistency
 - Use Case
   - Highly scalable shared file system using NFS
+- EFS - When you need distributes highly resilient storage for Linux instances
+- FSx for Windows - Centralized storage for Windows-based Applications, such as SharePoint, Microsoft SQL Server, Workspaces, IIS Web Server
+- FSx for Lustre - For AI and ML based, high-speed, high-capacity distributed storage, compute-intensive applications. This will be for applications that do high performance computing (HPC), financial modelling. FSx for Lustre can store data directly on S3
