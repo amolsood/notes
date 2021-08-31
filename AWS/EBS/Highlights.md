@@ -153,13 +153,13 @@
   - Upto 16000 IOPS per volume
   - 99.9% durable
 - io1
-  - Suitable for OLTP and latency sensitive applications
+  - Suitable for OLTP (Online Transaction processing) and latency sensitive applications
   - 50 IOPS per GB
   - Upto 64000 IOPS per volume
   - High performance and most expensive
   - 99.9% durable
 - io2
-  - Suitable for OLTP and latency sensitive applications
+  - Suitable for OLTP (Online Transaction processing) and latency sensitive applications
   - 500 IOPS per GB
   - Upto 64000 IOPS per volume
   - High performance and most expensive
@@ -176,9 +176,17 @@
   - Lowest cost
   - 99.9% durable
 - Volumes - A virtual hard disk attached to EC2 instance, where OS can be installed or boot from
-- Snapshots - Exist on S3, snapshot of volume - point-in-time copy of volume
+- Snapshots - Exist on S3, snapshot of volume - point-in-time copy of volume (incremental in nature)
 - Location - EBS volumes will be same in AZ as of EC2 instance to which it is attached
 - Resize on the fly - Instance is not required to be stopped or restarted, however volume will be required to extended in OS else OS won't detect
 - Switch volume types on the fly - gp2 volume can be changed to io2 on the fly and instance is not required to be stopped or restarted
 
-### Samples
+### Use Cases
+
+- S3 - Used for serverless object storage
+- Glacier - Used for archiving objects
+- EFS - Network file system for Linux based instances. Centralized storage solution across multiple AZs
+- FSx for Lustre - File storage for high performance computing
+- EBS - Persistent storage for EC2 instances
+- Instance store - Ephemeral storage for EC2 instances
+- FSx for Windows - File storage for Windows based instances. Centralized storage solution across multiple AZs
