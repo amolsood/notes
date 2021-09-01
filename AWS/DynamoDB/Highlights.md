@@ -44,7 +44,7 @@
 ### [DynamoDB Streams](./Streams.png)
 
 - Time-ordered sequence of item-level changes in table (FIFO)
-- Stored for 24 hours
+- Every shard is stored for 24 hours
 - Broken up into shards
 - Records item-level inserts, deletes and updates
 - Combine with lambda functions for functionality like stored procedures
@@ -67,7 +67,7 @@
   - Zero impact on table performance or availability
   - Consistent within seconds and retained until deleted
   - Operates within same region as of source table
-- Point in time recovery
+- Point in time recovery (PITR)
   - Protects against accidental writes or deletes
   - Can restore to any point in last 35 days
   - Incremental backups
