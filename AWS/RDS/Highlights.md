@@ -12,6 +12,7 @@
   - Automated backups
 - Generally used for OLTP (Online Transaction Processing)
 - Not suitable for OLAP. Data warehouse like Redshift is optimized for OLAP
+- Automatic RDS backup can be stored for 35 days at most
 
 ### [Multi-AZ RDS](./Multi-AZ%20RDS.png)
 
@@ -75,7 +76,7 @@
 - RDS is for OLTP workloads
 - Not suitable for OLAP, use Redshift for data warehousing
 - Multi-AZ
-  - Exact copy of production database in another AZ
+  - Exact copy of production database in another AZ (not all AZs in that region)
   - Used for disaster recovery
   - Automatic failover to standby instance, Configuration managed by AWS in case of failover
 - Read Replica
@@ -92,3 +93,4 @@
     - Aurora - 15 replicas
     - MySQL - 5 replicas
     - PostgreSQL - 5 replicas
+  - Automated failover is only available with Aurora replicas
