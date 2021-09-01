@@ -45,6 +45,30 @@
   - Data analysis using large amounts of data as well as complex queries that take long time to complete
   - e.g - Analyzing net profits from past 3 years and sales forecasting
 
+### Aurora
+
+- Proprietary database from AWS, compatible with MySQL and PostgreSQL
+- 5 times better performance than MySQL and 3 times better performance than PostgreSQL at lower price point
+- Starts with 10GB and auto scales. Scales in 10GB increments upto 128TB (storage scaling)
+- Can scale upto 96 vCPUs and 768GB or memory (compute scaling)
+- 2 copies of data contained in each availability zone, with a minimum of 3 availability zones. Total 6 copies of data
+- Can handle with same write availability even if 2 copies are lost and read availability if 3 copies are lost
+- Storage is self-healing, any errors in disks are regularly scanned and repaired automatically
+- Replicas available
+  - Aurora - 15 replicas
+  - MySQL - 5 replicas
+  - PostgreSQL - 5 replicas
+- Automated backups are always enabled and do not impact DB performance
+- Can take snapshots with Aurora, no performance impact
+- Snapshots can be shared with other AWS accounts
+
+### Aurora Serverless
+
+- An on-demand, auto scaling configuration for MySQL and PostgreSQL editions of Aurora
+- The cluster automatically starts up, shuts down and scales capacity up or down based on application needs
+- Use cases
+  - Simple and Cost effective solution for infrequent, intermittent and unpredictable workloads
+
 ## Exam Tips
 
 - MS SQL server, MySQL, PostgreSQL, Oracle, MariaDB, Amazon Aurora
@@ -59,3 +83,12 @@
   - Used for performance scalability
   - Offloads read heavy operations to replica and frees up primary instance
   - e.g - Business intelligence, reporting jobs
+- Aurora
+  - 2 copies of data contained in each availability zone, with a minimum of 3 availability zones. Total 6 copies of data
+  - Automated backups are always enabled and do not impact DB performance
+  - Can take snapshots with Aurora, no performance impact
+  - Snapshots can be shared with other AWS accounts
+  - Replicas available
+    - Aurora - 15 replicas
+    - MySQL - 5 replicas
+    - PostgreSQL - 5 replicas
