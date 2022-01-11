@@ -68,6 +68,8 @@
 - NACLs have separate inbound and outbound rules and each rule either allow or deny the traffic
 - Network ACLs are stateless as responses to allowed inbound traffic are subject to outbound rules and vice-versa
 - Ephemeral Ports shall be opened to cover different types of clients that might initiate traffic to public facing instances. (1024-65535). This to allow clients to communicate and temporarily allow a session, which receives request on port 80 but respond via random port
+- No ip addresses and ports are left open by default to a security group
+- NACLs are located at the subnet level
 
 ## VPC Endpoints
 
@@ -81,6 +83,7 @@
 ### AWS PrivateLink
 
 - Allows the VPCs to share applications, without opening upto internet and VPC peering, no route tables, NAT gateways, internet gateways.
+- PrivateLink allows you to share out a single endpoint and not your entire VPC
 - Best to way to connect to other tens, hundreds, thousands of VPCs
 - The service VPC has to have a Network Load balancer and client VPC has to have an ENI to connect via PrivateLink
 
@@ -89,21 +92,64 @@
 - Allows a VPC to connect to another VPC via direct network route using private IP addresses.
 - Instances behave like they were on same private network.
 - VPCs can be peered with other VPCs in another AWS account, as well with other VPCs in same account.
-- Peering is in star configuration, (e.g 1 central VPC peers with 4 others), no transitive peering and does not work on Hub-and-Spoke model
+- Peering is in star configuration, (e.g 1 central VPC peers with 4 others), no [transitive peering](./Transitive%20Peering.png) and does not work on Hub-and-Spoke model
 - Can peer between regions.
 - **Same CIDR address ranged VPCs cannot be peered, Overlapping CIDR address ranged VPCs cannot be peered**
 
-### AWS VPN CloudHub
+### [AWS VPN CloudHub](./AWS%20VPN%20CloudHub.png)
 
 - If you have multiple sites, each with their own VPN connection, then AWS CloudHub can be used to connect sites together
 - Similar to VPC Peering but works on Hub-and-Spoke model
 - Low cost and easy to manage
 - Operates over public internet but all traffic between customer gateway and AWS VPN CloudHub is encrypted
 
+### [AWS DirectConnect](./DirectConnect.png)
+
+- It is a service that lets to establish a dedicated network connection from your premises on AWS
+- Consistent network connection
+- Types
+  - Dedicated Connection - A physical ethernet connection associated with a single customer. Can request a connection, via AWS DirectConnect Console, CLI or API
+  - Hosted Connection - A physical ethernet connection, that an AWS Direct Connect partner provisions on a behalf of customer. Customer request a hosted connection by a contacting a partner in AWS Direct Connect Partner program who provisions the connection
+- DirectConnect is faster, secure, reliable, and able to take massive throughput than VPN (a private connection which still routes the via public internet and slow)
+- Connects data center directly to AWS network
+- Useful for high-throughput workloads
+- Helpful when a stable and reliable connection is needed
+- Scenario - VPM keeps dropping out, and stable, secure and lost cost connection is required
+- DirectConnect connection is not encrypted by default
+
+### Transit Gateway
+
+- Connects VPCs and on-premise networks through a [central hub](./SampleComplexNetworkUsingTransitGateway.png) and solves [complexity](./SampleComplexNetwork.png) in connections and peering.
+- It acts as cloud router, each new connection is only made once
+- Facts
+  - Allows to transitive peering between thousands of VPCs and on-premise data centers
+  - Works on Hub-and-spoke model
+  - Works on regional basis but can have across multiple regions
+  - Works across multiple AWS accounts using Resource Access Manager (RAM)
+  - Works with Direct Connect and VPN connections
+  - **Supports IP multicast (not supported by any other AWS service)**
+- Scenario - Simplifying network topology or IP multi-casting
+
 ## Exam Tips
 
+- Logical Data center in AWS
 - Consists of Internet Gateways (or private gateways), route tables, network access control list, subnets, and security groups
+- 1 subnet is always in 1 AZ
 - NACLs (Network Access Control List) can be used to block certain IP addresses (not security groups)
+- NAT Gateways are redundant inside the AZ
+- NAT Gateways are auto-scalable and starts at 5Gbps and scales currently to 45Gbps
+- NAT Gateways is not required to be patched (OS)
+- NAT Gateways is not associated with any security group
+- NAT Gateways is assigned a public address automatically
+- [NAT Gateways - Scenario](./Tip%20-%20NAT%20Gateways.png)
+- Security groups are stateful
+- NACLs are stateless
+- Default NACL allows inbound/outbound traffic by default
+- Custom NACL denies inbound/outbound traffic by default, and rules are evaluated by lowest rule number first
+- Each subnet must be associated with at-least 1 NACL. If not associated explicitly, it is associated to default NACL automatically
+- Block IP Addresses using NACLs not security groups
+- NACL can be associated to multiple subnets, but a subnet can only be associated to only 1 NACL
+- NACLs are located at the subnet level
 
 ### Samples
 
