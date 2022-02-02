@@ -23,7 +23,7 @@
   - Hoover
   - AWS
   - Namecheap
-- SOA Record
+- SOA Record (Start of Authority)
   - Provides
     - Name of server that supplied the data for that zone
     - Administrator of that zone
@@ -58,6 +58,7 @@
 ### [Simple Routing Policy](./SimpleRoutingPolicy.png)
 
 - **Only one record can be mapped with multiple IP Addresses**
+- With simple routing, you typically route traffic to a single resource, for example, to a web server for your website.
 - If **multiple values are specified in a record**, Route 53 returns **all the values (IP Address)** in **random order** to the user (any of them for each request)
 
 ### [Weighted Routing Policy](./WeightedRoutingPolicy.png)
@@ -74,9 +75,36 @@
 - Used to create active/passive (primary/secondary) set up
 - If health check fails on primary record, it will fail-over to secondary record
 
+### [Geolocation Routing Policy](./GeolocationRoutingPolicy.png)
+
+- Lets choose where the traffic will be sent based on geographic location of users
+- Use Case - All queries to be routed to a fleet of EC2 instances setup in Europe for European customers
+
+### Geoproximity Routing Policy
+
+- Uses combination of geolocation, latency, and availability to route traffic
+- Only available under when using Route 53 Traffic flow
+- A bias can be set to route more or less traffic to given resource
+- A bias shrinks or expands the size of geographic region
+
+### [Latency Routing Policy](./LatencyRoutingPolicy.png)
+
+- Allow to route traffic based on the lowest network latency for end user
+
+### Multivalue Answer Routing Policy
+
+- Lets you configure Route 53 to return multiple values
+- Route 53 only returns values for healthy resources
+- Similar to simple routing policy however it allows to put health checks on each record set
+
 ## Exam Tips
 
 - Route 53 is global
+- Given the choice, always choose alias over CNAME.
+- Domain names can be bought from AWS, can take upto 2-3 days to registration
+- Health checks can be set on individual record sets. If a record set fails a health check, it will be removed from Route 53 remove until health check passes
+- SNS alerts can be set to notify for a failed health check
+- All routing policies
 
 ### Samples
 
