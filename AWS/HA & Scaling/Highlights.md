@@ -107,7 +107,7 @@
 - **Auto scaling can only be done for EC2** - Other services might have auto scaling, but they are not included in Auto scaling groups
 - **Get ahead of workload** - Prefer to select solutions which are predictive rather than reactive
 - **Bake AMIs to reduce build times** - To avoid long provisioning times, all data/services shall be put in AMIs. This is better than using user data if possible. Baking your code into your AMIs will help reduce provisioning time.
-- **Spread out** - Spread out to multiple AZs/regions, its a requirement for a highly scalable system
+- **Spread out** - Spread out to multiple AZs/regions, its a requirement for a highly available system
 - **Steady state groups** - Fits to a case where we cannot have more than 1 instance running/online of a legacy resource
 - **ELBs are essential** - Make sure to enable health checks from load balancers, else the failed resources wont be terminated and replaced
 - **RDS** has most amount of scaling options available
