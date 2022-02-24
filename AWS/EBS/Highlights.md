@@ -12,7 +12,7 @@
 - Volumes smaller than 1GB can burst upto 3000 IOPS
 - Good for boot volumes or development and test applications that are not latency sensitive
 
-### General Purpose SSD (gp3)
+### Provisioned IOPS SSD (gp3)
 
 - Predictable 3000 IOPS baseline performance and 125 MiB/s regardless of volume size
 - Ideal for applications that require high performance at a low cost, such as MySQL, Cassandra, Hadoop etc.
@@ -56,6 +56,7 @@
 ### Volumes
 
 - Virtual Hard Disk
+- Resize/Change volume type (gp2 -> gp3) on the fly - Instance is not required to be stopped or restarted, however volume will be required to extended in OS else OS won't detect
 
 ### Snapshots
 
@@ -76,7 +77,7 @@
 - All Snapshots of encrypted volumes are encrypted
 - All volumes created from encrypted snapshots are encrypted
 - Has minimal impact on latency
-- Copying an un-encrypted snapshot allows encryption
+- **Copying an un-encrypted snapshot allows encryption**
 - Root device volumes can be encrypted upon creation
 
 ### EC2 Hibernation

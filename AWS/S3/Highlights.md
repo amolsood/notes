@@ -168,7 +168,7 @@
 
 ### Replication (Cross region replication)
 
-- Objects can be replicated from one bucket to another
+- Objects can be replicated from one bucket to another (in same or different region)
 - The source and destination buckets must have versioning enabled
 - Existing objects are NOT automatically replicated when replication is turned on
 - Deleting individual versions or delete markers are not replicated by default, but can be turned on

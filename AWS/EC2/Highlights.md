@@ -26,9 +26,9 @@
   - Moves like share price, once the capacity is available for desired price, the spot instance is available, once the price moves away, spot instance is terminated
   - Used for applications which have flexible start and end times (not web servers)
   - Applications which are feasible at low compute prices
-  - Users with an urgent need of additional or high compute capacity
+  - Users with an urgent need of additional or high compute capacity, without need of the persistent storage
 - Dedicated Hosts
-  - For compliance - Regulatory requirements that my not support multi-tenant virtualization
+  - For compliance - Regulatory requirements that may not support multi-tenant virtualization
   - The most expensive option
   - Licensing - Great for licensing which does not support multi-tenancy or cloud deployments
   - Can be purchased on demand
@@ -62,6 +62,7 @@
   - EN  - Enhanced Networking - Uses single root I/O virtualization (SR-IOV) to provide high performance
   - EFA - Elastic Fabric Adapter - Accelerates High Performance Computing (HPC) and ML applications
 - ENI
+  - For basic networking, low cost
   - Private IPv4, Public IPv4, Many IPv6 Addresses,MAC Address, 1 or more security groups
 - EN
   - 10-100 Gbps performance
@@ -81,7 +82,7 @@
   - Spread - Each instance is kept on distinct underlying hardware. Used for applications having small number of critical instances. E.g DB on different hardware. Used for individual instances
   - Partition - Each partition has it own set of racks, with different power source and network. No 2 partitions within a placement group share the same racks. Allows to isolate the impact of hardware failures. Used for multiple instances
 - A cluster placement group cannot span across multiple AZs while spread and partition placement groups can
-- Only certain types of instances can be launched in a placement group (compute optimized, gpu memory optimized, storage optimized)
+- Only certain types of instances can be launched in a placement group (compute optimized, gpu memory optimized, memory optimized, storage optimized)
 - Placement groups cannot be merged
 - AWS recommends homogenous instances within cluster placement groups
 - An existing instance can be moved into a placement group. Before moving the instance should be stopped. The instances can be moved or removed using AWS CLI and AWS SDK only, not available on AWS console yet

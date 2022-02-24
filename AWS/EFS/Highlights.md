@@ -42,7 +42,7 @@
   - Highly scalable shared file system using NFS
 - EFS - When you need distributes highly resilient storage for Linux instances
 - FSx for Windows - Centralized storage for Windows-based Applications, such as SharePoint, Microsoft SQL Server, Workspaces, IIS Web Server
-- FSx for Lustre - For AI and ML based, high-speed, high-capacity distributed storage, compute-intensive applications. This will be for applications that do high performance computing (HPC), financial modelling. FSx for Lustre can store data directly on S3
+- FSx for Lustre (Linux file system) - For AI and ML based, high-speed, high-capacity distributed storage, compute-intensive applications. This will be for applications that do high performance computing (HPC), financial modelling. FSx for Lustre can store data directly on S3
 
 ### Samples
 
