@@ -7,7 +7,7 @@
 - Types
   - Application Load Balancer - Best suited for balancing HTTP and HTTPS traffic. Operate at layer-7 and are application-aware (Intelligent Load Balancer)
   - Network Load Balancer - Operates on connection level (layer-4), capable of handling millions of requests per seconds while maintaining ultra-low latencies (Performance Load Balancer)
-  - Classic Load Balancer - Legacy load balancers. Can load balance HTTP/HTTPS application and use layer-7 specific features, such as X-forwarded and sticky sessions (Classis/Test/Dev Load Balancer)
+  - Classic Load Balancer - Legacy load balancers. Can load balance HTTP/HTTPS application and use layer-7 specific features, such as X-forwarded and sticky sessions (Classic/Test/Dev Load Balancer)
 
 ### Health Checks
 
@@ -20,7 +20,7 @@
 
 - Layer 7 load balancing - Functions at Application layer of OSI model
 - Listeners - Checks for connection requests from clients, using protocol and ports configured. Rules are defined to instruct load balancer to route the requests to registered targets. Each rule has a priority, one or more actions, one or more conditions
-- Rules - If rules are met, the its actions are performed. Each listener should have a default rule defined
+- Rules - If rules are met, its actions are performed. Each listener should have a default rule defined
 - Target Groups - Each target group routes requests to one or more registered targets, such as EC2 instances
 - Limitations - Only supports HTTP/HTTPS
 - HTTPS - To use HTTPS load balancer, you should deploy at least one SSL/TLS server certificate on load balancer. The load balancer uses a server certificate to terminate the frontend connection and then decrypt requests from clients before sending them to the targets
@@ -49,7 +49,7 @@
 
 - Classic load balancers route each request independently to registered EC2 instances with the smallest load. Sticky session allows to bind a user session to a specific EC2 instance. Can be used to **store the information locally** to that instance
 - This ensures that all the requests from that user during session are sent to the same instance
-- Limitation - If a user session is bound to an EC2 instance, and if it is removed (terminate) the load balancer pool, then load balancer wont find the route that server and will result in error for that user. To fix it, sticky session need to be disabled
+- Limitation - If a user session is bound to an EC2 instance, and if it is removed (terminated) from the load balancer pool, then load balancer wont find the route that server and will result in error for that user. To fix it, sticky session need to be disabled
 - Sticky session can be enabled for Application load balancers as well, but the traffic is sent at a target group level
 
 ### Deregistration Delay (Connection draining)
@@ -57,9 +57,5 @@
 - **Allows load balancers to keep existing connections open if the EC2 instances are de-registered or become unhealthy**
 - Enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy
 - This feature can disabled if existing connections are required to be closed immediately when instances are de-registered or have become unhealthy
-
-## Exam Tips
-
--
 
 ### Samples

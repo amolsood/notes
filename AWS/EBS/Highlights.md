@@ -181,6 +181,7 @@
 - Location - EBS volumes will be same in AZ as of EC2 instance to which it is attached
 - Resize on the fly - Instance is not required to be stopped or restarted, however volume will be required to extended in OS else OS won't detect
 - Switch volume types on the fly - gp2 volume can be changed to io2 on the fly and instance is not required to be stopped or restarted
+- SSD-Backed Storage Optimized (i2) instances provide more than 365,000 random IOPS.
 
 ### Use Cases
 

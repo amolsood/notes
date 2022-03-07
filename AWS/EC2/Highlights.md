@@ -27,6 +27,8 @@
   - Used for applications which have flexible start and end times (not web servers)
   - Applications which are feasible at low compute prices
   - Users with an urgent need of additional or high compute capacity, without need of the persistent storage
+  - When Spot Instances are terminated, new instances will launch until the Spot request is canceled.
+  - To remove the Spot Instances, the appropriate steps are to cancel the Spot request and then to terminate the Spot Instances.
 - Dedicated Hosts
   - For compliance - Regulatory requirements that may not support multi-tenant virtualization
   - The most expensive option
@@ -45,13 +47,13 @@
 - All inbound traffic is blocked by default
 - All outbound traffic is allowed
 - Multiple Security groups can be attached to an EC2 instance
+- Changes to security group takes effect immediately on running instances
 
 ### BootStrap Scripts
 
 - Allows to run commands on EC2 instance boot
 - Increases boot time based on commands
 - Helps to automate installation of certain packages/applications
-- Changes to security group takes effect immediately
 - It passes user data to EC2 instance at boot time
 
 ### Networking
@@ -63,7 +65,7 @@
   - EFA - Elastic Fabric Adapter - Accelerates High Performance Computing (HPC) and ML applications
 - ENI
   - For basic networking, low cost
-  - Private IPv4, Public IPv4, Many IPv6 Addresses,MAC Address, 1 or more security groups
+  - Private IPv4, Public IPv4, Many IPv6 Addresses, MAC Address, 1 or more security groups
 - EN
   - 10-100 Gbps performance
   - Provides higher I/O performance with less CPU utilization
@@ -105,6 +107,7 @@
 - How to terminate spot instances - Cancel the spot request and terminate the related instance(s)
 - User-data - Used for bootstrap scripts. It is not run automatically if EC2 instance is restarted. It runs one time only
 - Mete-data - Data about EC2 instance. Bootstrap scripts can be used to access meta-data. Url - 169.254.169.254
+- The only way to retrieve instance metadata is to use the link-local address, which is 169.254.169.254.
 
 ### Samples
 

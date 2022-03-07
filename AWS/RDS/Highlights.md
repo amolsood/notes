@@ -62,6 +62,7 @@
 - Automated backups are always enabled and do not impact DB performance
 - Can take snapshots with Aurora, no performance impact
 - Snapshots can be shared with other AWS accounts
+- Aurora Serverless also incurs no compute costs when it is idle.
 
 ### Aurora Serverless
 

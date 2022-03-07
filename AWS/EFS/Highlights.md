@@ -13,9 +13,9 @@
 - Compatible with Linux AMI (Windows not yet supported)
 - Encryption at rest using AWS KMS
 - Automatic scaling, no capacity planning required
-- Pay per use, that's wy expensive
+- Pay per use, that's why expensive
 - Performance
-  - Can support 1000s concurrent connections (EC2 instances)
+  - Can support 1000s of concurrent connections (EC2 instances)
   - 10 Gbps throughput
   - Scaling upto Petabytes
 - Performance control

@@ -35,6 +35,7 @@
   - Minimum - This is the lowest of number of EC2 instances which will be online, it won't down scale below this threshold. If set to 0, it can shutdown the last one EC2 instance running if not in use
   - Maximum - The roof, it won't up scale above this threshold. Cost to be considered
   - Desired - How many are required at current point in time
+- Which instance will be terminated first? - The instance launched from the oldest launch configuration
 
 ### Scaling Policies (WHEN)
 
@@ -44,7 +45,7 @@
   - Instance Cooldown - Pauses auto scaling for a set amount of time. Helps to avoid runaway scaling events (defaults to 5 minutes)
   - Avoids Thrashing - You want to create instances quickly and spin them down slowly
 - Types
-  - Reactive Scaling - Playing catchup, once load is there you measure it and then determine to if you need to create more resources
+  - Reactive Scaling - Playing catchup, once load is there you measure it and then determine if you need to create more resources
   - Scheduled Scaling - Great for predictive workload, create a scaling event to get resources ready to go before they are actually needed
   - Predictive Scaling - AWS uses ML to determine when scaling will be required. Reevaluated every 24 hours to create a forecast of next 48 hours
 - **Steady state auto scaling group** - Min, Max and Desired set to 1 and multiple subnets, if an instance is terminated it will spin up a new one automatically in another AZs (subnet)
@@ -53,7 +54,7 @@
 
 - Scaling options
   - Vertical Scaling - Resizing the database from one size to another can create greater performance
-  - Scaling Storage - Storage can be resized, but it only goes up not down
+  - Scaling Storage - Storage can be resized, but it only goes up not down (only scale-out)
   - Read Replicas - Creating read-only copies to spread the workload across AZs and even regions (Upto 15 replicas with Aurora)
   - Aurora serverless - Scaling can be offloaded to AWS if using Aurora, as it excels on **unpredictable workloads**
 
@@ -77,10 +78,10 @@
   - Easiest, AWS Recommended, more granularity, supports versioning. Favored solution over configurations
   - User data is included in template or configuration. If user data has to be changed, the versioning shall be done and new version shall be created for that launch template with updated user data
 - Auto scaling
-  - Auto scaling is important to build a highly available application - Sel answers that spread resources out over multiple AZs and utilize load balancers
+  - Auto scaling is important to build a highly available application - Select answers that spread resources out over multiple AZs and utilize load balancers
   - Auto scaling groups will contain the location of where the instances will live
   - Its vital to select a load balancer for instances to live behind
-  - Mix, Max and desired are the 3 most important settings
+  - Min, Max and desired are the 3 most important settings
   - SNS can act as a notification tool
   - Will balance EC2 instances across the AZs
 - Scaling Policies
@@ -94,7 +95,7 @@
   - Careful with Storage - RDS storage only scales up, not down
   - Vertical Scaling - Up-size the instance
   - Multi-AZ - Unless its dev env, turn this on for High availability
-  - Aurora Everything - Whenever possible, use Aurora if the situation calls for relation DB
+  - Aurora Everything - Whenever possible, use Aurora if the situation calls for relational DB
 - Non-Relational Database Scaling
   - Access Patterns - Know if it is predictable or unpredictable
   - Design Matters - Avoiding similar keys to avoid hot partitions will also lead to better performance
@@ -102,7 +103,7 @@
   - Cost - Predictable = Provisioned, Sporadic = On-Demand
 - Is it highly available? - Default to think like this, unless question mentions. If question mentions, then we can expect failures of resources or slow performance of solution, mostly due to cost effectiveness
 - Which is appropriate, vertical or horizontal - Generally favor Horizontal, but vertical is not left out
-- Is is cost effective?
+- Is it cost effective?
 - Would switching databases fix the problem? - Hard in real life, easy to answer in AWS exam
 - **Auto scaling can only be done for EC2** - Other services might have auto scaling, but they are not included in Auto scaling groups
 - **Get ahead of workload** - Prefer to select solutions which are predictive rather than reactive

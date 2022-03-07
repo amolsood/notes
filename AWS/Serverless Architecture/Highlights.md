@@ -77,6 +77,7 @@
 - ECS or EKS is a requirement. Fargate doesn't work by itself
 - Fargate is more expensive but easy to use
 - Fargate is for containers and applications that need to run longer. Lambda excels at short and simpler functions
+- When Amazon ECS uses Fargate for compute, it incurs no costs when the application is idle.
 - Fargate
   - When workloads are consistent
   - Allows docker use access the organization and a greater level of control by developers

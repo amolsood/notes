@@ -33,6 +33,7 @@
     - Fifo queue does Guaranteed ordering, no message duplication **(Exactly once message delivery)**, only 300 message transactions per second and has increased cost because of de-duplication and ordering which AWS has to do
     - Fifo queue name has to end with `.fifo`
     - Message deduplication ID - If value is set, then the same message can be received by the queue, but it won't received by the consumer within the deduplication interval (5 minute)
+  - You cannot convert SQS queues after you create them (Standard to FIFO and vice-versa)
 
 ### Simple Notification Service (SNS)
 

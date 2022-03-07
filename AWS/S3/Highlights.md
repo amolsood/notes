@@ -201,6 +201,8 @@
 - Object ACLs - Control permissions on individual objects
 - Bucket Policies - Control permission on entire bucket (Bucket Wide JSON Policies)
 - HTTP 200 status code on successful upload via CLI or API
+- All objects by default are private. Only the object owner has permission to access these objects. However, the object owner can optionally share objects with others by creating a presigned URL, using their own security credentials, to grant time-limited permission to download the objects. When you create a presigned URL for your object, you must provide your security credentials, specify a bucket name, an object key, specify the HTTP method (GET to download the object) and expiration date and time. The presigned URLs are valid only for the specified duration. Anyone who receives the presigned URL can then access the object.
+- S3 Transfer Acceleration facilitates quicker uploads by using edge locations to copy data into Amazon S3. S3 Transfer Acceleration does not solve the problem of the file size limitation (5 GB) for a single PUT operation.
 
 ### Sample Bucket Policy (To allow make objects public in the BUCKET_NAME bucket)
 

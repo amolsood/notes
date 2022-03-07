@@ -114,7 +114,7 @@
 - Connects data center directly to AWS network
 - Useful for high-throughput workloads
 - Helpful when a stable and reliable connection is needed
-- Scenario - VPM keeps dropping out, and stable, secure and lost cost connection is required
+- Scenario - VPN keeps dropping out, and stable, secure and lost cost connection is required
 - DirectConnect connection is not encrypted by default
 
 ### Transit Gateway

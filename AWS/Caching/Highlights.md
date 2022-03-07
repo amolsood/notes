@@ -66,6 +66,6 @@
   - If scenario talks about IP Caching, think Global accelerator
   - Speeds it up - It uses edge locations to help speed everything up
   - Weighting - Easily create different weighted groups in each region architecture lives in
-  - Provided wit 2 static IPs that don't change, can setup own IP Addresses too
+  - Provided with 2 static IPs that don't change, can setup own IP Addresses too
 
 ### Samples

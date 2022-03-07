@@ -57,7 +57,7 @@
 - Multi-region redundancy for disaster recovery or high availability
 - No application rewrites (built in DynamoDB)
 - Replication latency under 1 second
-- Streams need are required to be enabled to make a table global
+- Streams are required to be enabled to make a table global
 - Table write capacity needs to be Pay-per-request or AutoScaled to have replicas created in another region
 
 ### Backups
