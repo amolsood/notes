@@ -48,6 +48,8 @@
 - All outbound traffic is allowed
 - Multiple Security groups can be attached to an EC2 instance
 - Changes to security group takes effect immediately on running instances
+- You can specify rules for both inbound and outbound traffic
+- You can specify allow rules but not deny rules
 
 ### BootStrap Scripts
 
@@ -106,8 +108,13 @@
 - Roles can be attached or detached at EC2 runtime with immediate effect without stopping or terminate the instance
 - How to terminate spot instances - Cancel the spot request and terminate the related instance(s)
 - User-data - Used for bootstrap scripts. It is not run automatically if EC2 instance is restarted. It runs one time only
-- Mete-data - Data about EC2 instance. Bootstrap scripts can be used to access meta-data. Url - 169.254.169.254
+- Meta-data - Data about EC2 instance. Bootstrap scripts can be used to access meta-data. Url - http://169.254.169.254/latest/meta-data/
+- User-data - http://169.254.169.254/latest/user-data/
 - The only way to retrieve instance metadata is to use the link-local address, which is 169.254.169.254.
+- Hot attach - Attaching when EC2 instance is running
+- Warm attach - Attaching when EC2 instance is stopped
+- Cold attach - Attaching when EC2 instance is being launched
+- You can detach secondary network interfaces when the instance is running or stopped. However, you can't detach the primary network interface. You can move a network interface from 1 instance to another if the instances are in the same Availability Zone and VPC but in different subnets.
 
 ### Samples
 

@@ -70,6 +70,7 @@
 - Ephemeral Ports shall be opened to cover different types of clients that might initiate traffic to public facing instances. (1024-65535). This to allow clients to communicate and temporarily allow a session, which receives request on port 80 but respond via random port
 - No ip addresses and ports are left open by default to a security group
 - NACLs are located at the subnet level
+- The default network ACL is configured to allow all traffic to flow in and out of the subnets with which it is associated. Each network ACL also includes a rule whose rule number is an asterisk. This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied. You can't modify or remove this rule
 
 ## VPC Endpoints
 
@@ -150,6 +151,7 @@
 - Block IP Addresses using NACLs not security groups
 - NACL can be associated to multiple subnets, but a subnet can only be associated to only 1 NACL
 - NACLs are located at the subnet level
+- The default network ACL is configured to allow all traffic to flow in and out of the subnets with which it is associated. Each network ACL also includes a rule whose rule number is an asterisk. This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied. You can't modify or remove this rule
 
 ### Samples
 

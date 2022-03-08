@@ -93,5 +93,6 @@
 - Open source/on-premise = Kubernetes - Consider EKS; container management solution that can run in AWS and on-premises
 - Fargate doesn't work alone - In order to use Fargate, you must be using ECS or EKS
 - Containers are flexible
+- It's **always** a good idea to use roles over hard-coded credentials. With **IAM roles for Amazon ECS tasks**, you can specify an IAM role that can be used by the containers in a task.
 
 ### Samples
