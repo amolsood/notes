@@ -55,10 +55,10 @@
 
 ### Security Groups and Network ACLs (NACL)
 
-- Security groups are virtual firewalls for and EC2 instance, defaults to `blocked` unless opened to 0.0.0.0/0 (to open up to everything)
+- Security groups are virtual firewalls for an EC2 instance, defaults to `blocked` unless opened to 0.0.0.0/0 (to open up to everything)
 - Are stateful in nature. **Responses to allowed inbound traffic are allowed flow out irrespective of outbound rules**. If port 80 is opened as inbound rule and blocked in outbound rule, it will still allow the communication over port 80.
 - NACL is an optional layer of security which acts as a firewall for a VPC which monitors traffic flowing in or out.
-- Inbound and outboud traffic is
+- Inbound and outbound traffic is
   - allowed for Default NACLs
   - blocked by default on Custom NACLs until rules are added
 - Each subnet in VPC must be associated an NACL. If not explicitly specified, it will associate to default NACL
@@ -115,7 +115,7 @@
 - Connects data center directly to AWS network
 - Useful for high-throughput workloads
 - Helpful when a stable and reliable connection is needed
-- Scenario - VPN keeps dropping out, and stable, secure and lost cost connection is required
+- Scenario - VPN keeps dropping out, and stable, secure and low cost connection is required
 - DirectConnect connection is not encrypted by default
 
 ### Transit Gateway
@@ -152,6 +152,7 @@
 - NACL can be associated to multiple subnets, but a subnet can only be associated to only 1 NACL
 - NACLs are located at the subnet level
 - The default network ACL is configured to allow all traffic to flow in and out of the subnets with which it is associated. Each network ACL also includes a rule whose rule number is an asterisk. This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied. You can't modify or remove this rule
+- You can't have a VPC with IPv6 CIDRs only. The default IP addressing system in VPC is IPv4. You can only change your VPC to dual-stack mode where your resources can communicate over IPv4, or IPv6, or both, but not exclusively with IPv6 only.
 
 ### Samples
 

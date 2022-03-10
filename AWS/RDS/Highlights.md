@@ -21,6 +21,7 @@
 - MS SQL server, MySQL, PostgreSQL, Oracle, MariaDB can be configured as Multi-AZ RDS instance
 - **Amazon Aurora is always Multi-AZ**
 - Only for disaster recovery and not for improving performance
+- Amazon RDS simply flips the canonical name record (CNAME) for your DB instance to point at the standby, which is in turn promoted to become the new primary.
 
 ### FailOver
 

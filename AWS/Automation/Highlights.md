@@ -45,6 +45,7 @@
   - Hybrid Activations - Control on-premises architecture using Systems manager
   - Session Manager - Remotely connect and interact with architecture
 - Application of Parameter Store - Store variables which can be loaded at runtime, without keeping secret keys on GitHub or anywhere else
+- Secrets Manager enables you to replace hardcoded credentials in your code (including passwords), with an API call to Secrets Manager to retrieve the secret programmatically. Also, you can configure Secrets Manager to automatically rotate the secret for you according to a schedule that you specify. This enables you to replace long-term secrets with short-term ones, which helps to significantly reduce the risk of compromise.
 
 ## Exam Tips
 

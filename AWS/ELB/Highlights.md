@@ -25,6 +25,7 @@
 - Limitations - Only supports HTTP/HTTPS
 - HTTPS - To use HTTPS load balancer, you should deploy at least one SSL/TLS server certificate on load balancer. The load balancer uses a server certificate to terminate the frontend connection and then decrypt requests from clients before sending them to the targets
 - Allows load balancing based on contents of the request
+- You can't assign an Elastic IP address to an Application Load Balancer. The alternative method you can do is assign an Elastic IP address to a Network Load Balancer in front of the Application Load Balancer.
 
 ### Network Load Balancers (NLB)
 
@@ -37,6 +38,7 @@
 - Encryption - A TLS listener can be used to offload encryption and decryption to your load balancer, so applications can focus on business logic. An SSL certificate can be installed to the load balancer directly for decryption of traffic
 - Use Cases - Best suited for TCP traffic **extreme performance requirement**, handling millions of requests per second with ultra low latencies
 - It will send traffic to all the instances, if all instances are unhealthy, hoping one is online
+- You can assign an Elastic IP address to an Network Load Balancer.
 
 ### Classic Load Balancers (CLB)
 
