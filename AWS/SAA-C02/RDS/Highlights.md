@@ -17,11 +17,14 @@
 ### [Multi-AZ RDS](./Multi-AZ%20RDS.png)
 
 - Works only for production instances
-- Creates an exact copy of database in another AZ
+- Creates an exact copy of database in another AZ, not in all AZs
 - MS SQL server, MySQL, PostgreSQL, Oracle, MariaDB can be configured as Multi-AZ RDS instance
 - **Amazon Aurora is always Multi-AZ**
 - Only for disaster recovery and not for improving performance
 - Amazon RDS simply flips the canonical name record (CNAME) for your DB instance to point at the standby, which is in turn promoted to become the new primary.
+- Backups are taken from secondary copy of data
+- All updates or maintenance changes are applied to the secondary database. You then cut over to that secondary copy of your data.
+- If your primary database fails, you'll automatically fail over to the secondary copy. Which of the following is a benefit of using RDS Multi-AZ?
 
 ### FailOver
 
@@ -49,7 +52,7 @@
 
 ### Aurora
 
-- Proprietary database from AWS, compatible with MySQL and PostgreSQL
+- Proprietary database from AWS, **compatible with MySQL and PostgreSQL**
 - 5 times better performance than MySQL and 3 times better performance than PostgreSQL at lower price point
 - Starts with 10GB and auto scales. Scales in 10GB increments upto 128TB (storage scaling)
 - Can scale upto 96 vCPUs and 768GB or memory (compute scaling)
@@ -78,6 +81,7 @@
 
 - MS SQL server, MySQL, PostgreSQL, Oracle, MariaDB, Amazon Aurora
 - RDS is for OLTP workloads
+- AWS patches and updates your RDS databases
 - Not suitable for OLAP, use Redshift for data warehousing
 - Multi-AZ
   - Exact copy of production database in another AZ (not all AZs in that region)

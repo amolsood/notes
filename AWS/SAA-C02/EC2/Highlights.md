@@ -28,6 +28,7 @@
   - Used for applications which have flexible start and end times (not web servers)
   - Applications which are feasible at low compute prices
   - Users with an urgent need of additional or high compute capacity, without need of the persistent storage
+  - If your Spot Instance has been marked for termination, a notification will be best-effort posted to the metadata of your EC2 instance 2 minutes before it is stopped or terminated
   - When Spot Instances are terminated, new instances will launch until the Spot request is canceled.
   - To remove the Spot Instances, the appropriate steps are to cancel the Spot request and then to terminate the Spot Instances.
 - Dedicated Hosts

@@ -48,6 +48,7 @@
 
 - Interactive query service that makes easy to analyze data in S3 using SQL
 - Allows query data in S3 bucket without loading it into database
+- Athena lets you query data stored in S3
 - Glue is a serverless data integration service that makes easy to discover, prepare and combine data. Allows to perform ETL workloads without managing underlying servers (Kind of replaces EMR)
 - Required when looking for serverless SQL solution. Only service that allows to directly query on data stored in S3
 

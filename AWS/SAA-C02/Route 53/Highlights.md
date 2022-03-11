@@ -37,6 +37,7 @@
 - **CNAME cannot be used for naked domain names (zone apex records), e.g - Cannot have CNAME for google.com**
 - **A record/Alias can be used for naked domain names**
 - Domain names can directly be bought on AWS, can take upto 3 days to register depending on circumstances
+- Route 53 allows you to host both public and private zones. In terms of IP addresses, public zones should be used for public IPs and private zones should be used for private IPs.
 
 ### Routing Policies
 
@@ -74,6 +75,7 @@
 
 - Used to create active/passive (primary/secondary) set up
 - If health check fails on primary record, it will fail-over to secondary record
+- A failover routing policy would allow you to have a backup endpoint.
 
 ### [Geolocation Routing Policy](./GeolocationRoutingPolicy.png)
 

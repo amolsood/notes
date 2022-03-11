@@ -182,6 +182,7 @@
 - Resize on the fly - Instance is not required to be stopped or restarted, however volume will be required to extended in OS else OS won't detect
 - Switch volume types on the fly - gp2 volume can be changed to io2 on the fly and instance is not required to be stopped or restarted
 - SSD-Backed Storage Optimized (i2) instances provide more than 365,000 random IOPS.
+- Encryption operations occur on the servers that host EC2 instances, ensuring the security of both data-at-rest and data-in-transit between an instance and its attached EBS storage
 
 ### Use Cases
 

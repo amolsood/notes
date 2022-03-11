@@ -8,6 +8,7 @@
   - User friendly
   - All subnets in default VPC have a route out to internet
   - Each EC2 instance in this VPC has a public and a private IP Address
+  - 172.31.0.0/16 is the IPv4 CIDR block for the Default VPC provided by AWS out of the box
 - Custom VPCs
   - Fully customizable
   - Takes time to setup

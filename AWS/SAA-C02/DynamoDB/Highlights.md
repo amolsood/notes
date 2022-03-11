@@ -59,6 +59,7 @@
 - Replication latency under 1 second
 - Streams are required to be enabled to make a table global
 - Table write capacity needs to be Pay-per-request or AutoScaled to have replicas created in another region
+- DynamoDB is not deployed into your VPC. Your VPC must have an internet gateway or a VPC endpoint configured to access resources such as Amazon DynamoDB
 
 ### Backups
 
