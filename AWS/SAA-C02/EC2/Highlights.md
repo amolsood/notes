@@ -22,6 +22,7 @@
   - Convertible RIs - Upto 54% discount on on-demand
   - Scheduled RIs - Capacity reservation (high/low) in specific time window. For predictable recurring schedule that only requires a fraction of a day, week, month etc
   - Operate at Regional Level (**Region Specific**)
+  - Reserved Instances that applied to **terminated instances are still billed** until the end of their term according to their payment option.
 - Spot
   - Moves like share price, once the capacity is available for desired price, the spot instance is available, once the price moves away, spot instance is terminated
   - Used for applications which have flexible start and end times (not web servers)
@@ -97,6 +98,16 @@
 - Not used for - Persistent workloads, Critical jobs, Databases
 - Spot Fleet - Collection of spot instances
 
+### Instance Lifecycle states
+
+- Below are the valid EC2 lifecycle instance states:
+- `pending` - The instance is preparing to enter the running state. An instance enters the pending state when it launches for the first time, or when it is restarted after being in the stopped state. (**not billed**)
+- `running` - The instance is running and ready for use.
+- `stopping` - The instance is preparing to be stopped. Take note that you will not billed if it is preparing to stop however, you will still be billed if it is just preparing to hibernate. (**not billed if preparing to stop, but billed if preparing for hibernation**)
+- `stopped` - The instance is shut down and cannot be used. The instance can be restarted at any time.
+- `shutting-down` - The instance is preparing to be terminated.
+- `terminated` - The instance has been permanently deleted and cannot be restarted. (**not billed, but billed for reserved instances**)
+
 ## Exam Tips
 
 - Like a VM, hosted in AWS, grow and shrink capacity
@@ -115,6 +126,10 @@
 - Warm attach - Attaching when EC2 instance is stopped
 - Cold attach - Attaching when EC2 instance is being launched
 - You can detach secondary network interfaces when the instance is running or stopped. However, you can't detach the primary network interface. You can move a network interface from 1 instance to another if the instances are in the same Availability Zone and VPC but in different subnets.
+- Keep in mind that an EC2 instance has an underlying physical host computer. If the instance is stopped, AWS usually moves the instance to a new host computer. Your instance may stay on the same host computer if there are no problems with the host computer.
+- Stopped instance can still be restarted.
+- Take note that when a Reserved Instance expires, any instances that were covered by the Reserved Instance are billed at the on-demand price which costs significantly higher
+- You are limited to running On-Demand Instances per your vCPU-based On-Demand Instance limit. There is also a limit of purchasing 20 Reserved Instances, and requesting Spot Instances per your dynamic Spot limit per region
 
 ### Samples
 

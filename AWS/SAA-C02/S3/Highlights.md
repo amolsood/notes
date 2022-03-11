@@ -108,6 +108,9 @@
   - Objects that are stored in the S3 Glacier storage class can only be transitioned to the S3 Glacier Deep Archive storage class.
   - The transition of objects to the S3 Glacier Deep Archive storage class can go only one way.
   - The objects that are stored in the S3 Glacier and S3 Glacier Deep Archive storage classes are visible and available only through Amazon S3. They are not available through the separate Amazon S3 Glacier service.
+  - Lifecycle configuration enables you to specify the lifecycle management of objects in a bucket. The configuration is a set of one or more rules, where each rule defines an action for Amazon S3 to apply to a group of objects. These actions can be classified as follows:
+    - Transition actions - In which you define when objects transition to another storage class.
+    - Expiration actions – In which you specify when the objects expire. Then Amazon S3 deletes the expired objects on your behalf.
 
 ### Object Lock
 
@@ -204,6 +207,9 @@
 - All objects by default are private. Only the object owner has permission to access these objects. However, the object owner can optionally share objects with others by creating a presigned URL, using their own security credentials, to grant time-limited permission to download the objects. When you create a presigned URL for your object, you must provide your security credentials, specify a bucket name, an object key, specify the HTTP method (GET to download the object) and expiration date and time. The presigned URLs are valid only for the specified duration. Anyone who receives the presigned URL can then access the object.
 - S3 Transfer Acceleration facilitates quicker uploads by using edge locations to copy data into Amazon S3. S3 Transfer Acceleration does not solve the problem of the file size limitation (5 GB) for a single PUT operation.
 - The Amazon S3 notification feature enables you to receive notifications when certain events happen in your bucket. To enable notifications, you must first add a notification configuration that identifies the events you want Amazon S3 to publish and the destinations where you want Amazon S3 to send the notifications. An S3 notification can be set up to notify you when objects are restored from Glacier to S3.
+- You can use two types of **VPC endpoints to access Amazon S3**
+  - **Gateway endpoints** is a gateway that you specify in your route table to access Amazon S3 from your VPC over the AWS network. There is no additional charge for using gateway endpoints. However, standard charges for data transfer and resource usage still apply.
+  - **Interface endpoints** extend the functionality of gateway endpoints by using private IP addresses to route requests to Amazon S3 from within your VPC, on-premises, or from a different AWS Region. You pay an hourly rate for every provisioned Interface endpoint.
 
 ### Sample Bucket Policy (To allow make objects public in the BUCKET_NAME bucket)
 

@@ -12,6 +12,7 @@
   - Fully customizable
   - Takes time to setup
 - When a VPC is created, a route table, NACL (Main) and a security group is created
+- VPC belongs only to one region. You can have more than one VPC per region. However, there is a soft limit of 5 VPCs per region. You can ask Amazon for more than 5 if you need.
 
 ### Subnet
 
@@ -25,6 +26,7 @@
     - 10.0.0.2 - Reserved by AWS for future use
     - 10.0.0.255 - Network broadcast address. Broadcast is not supported in VPC, that's why reserved
 - Enabling Auto Assign public IPv4 address on subnet, will let all resources in this subnet to be accessible publicly
+- AZ can have more than one subnets. However, there is a soft limit of 200 subnets per AZ. You can ask Amazon for more than 200 if you need.
 
 ### Internet Gateway
 
@@ -52,6 +54,7 @@
   - Not associated with security groups
   - Automatically assigned a public address
 - Route out to internet is required (0.0.0.0/0) via Routing table outbound rule
+- NAT Gateways are charged on an hourly basis even for idle time.
 
 ### Security Groups and Network ACLs (NACL)
 
@@ -96,6 +99,9 @@
 - Peering is in star configuration, (e.g 1 central VPC peers with 4 others), no [transitive peering](./Transitive%20Peering.png) and does not work on Hub-and-Spoke model
 - Can peer between regions.
 - **Same CIDR address ranged VPCs cannot be peered, Overlapping CIDR address ranged VPCs cannot be peered**
+- The VPCs can be in different regions (also known as an inter-region VPC peering connection)
+- AWS uses the existing infrastructure of a VPC to create a VPC peering connection; it is neither a gateway nor a VPN connection, and does not rely on a separate piece of physical hardware. There is no single point of failure for communication or a bandwidth bottleneck.
+- This allows VPC resources including EC2 instances, Amazon RDS databases and Lambda functions that run in different AWS Regions to communicate with each other using private IP addresses, without requiring gateways, VPN connections, or separate network appliances
 
 ### [AWS VPN CloudHub](./AWS%20VPN%20CloudHub.png)
 
@@ -153,6 +159,7 @@
 - NACLs are located at the subnet level
 - The default network ACL is configured to allow all traffic to flow in and out of the subnets with which it is associated. Each network ACL also includes a rule whose rule number is an asterisk. This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied. You can't modify or remove this rule
 - You can't have a VPC with IPv6 CIDRs only. The default IP addressing system in VPC is IPv4. You can only change your VPC to dual-stack mode where your resources can communicate over IPv4, or IPv6, or both, but not exclusively with IPv6 only.
+- To enable the connection to a service running on an instance, the associated network ACL must allow both inbound traffic on the port that the service is listening on as well as allow outbound traffic from ephemeral ports. When a client connects to a server, a random port from the ephemeral port range (1024-65535) becomes the client's source port.
 
 ### Samples
 

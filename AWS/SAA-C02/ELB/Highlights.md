@@ -60,4 +60,11 @@
 - Enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy
 - This feature can disabled if existing connections are required to be closed immediately when instances are de-registered or have become unhealthy
 
+### Exam Tips
+
+- When you enable an Availability Zone for your load balancer, Elastic Load Balancing creates a load balancer node in the Availability Zone. If you register targets in an Availability Zone but do not enable the Availability Zone, these registered targets do not receive traffic. Your load balancer is most effective when you ensure that each enabled Availability Zone has at least one registered target.
+- With an Application Load Balancer however, it is a requirement that you enable at least two or more Availability Zones
+- After you disable an Availability Zone, the targets in that Availability Zone remain registered with the load balancer. However, even though they remain registered, the load balancer does not route traffic to them.
+- You can host multiple TLS secured applications, each with its own TLS certificate, behind a single load balancer. In order to use SNI, all you need to do is bind multiple certificates to the same secure listener on your load balancer. ALB will automatically choose the optimal TLS certificate for each client. These features are provided at no additional charge.
+
 ### Samples

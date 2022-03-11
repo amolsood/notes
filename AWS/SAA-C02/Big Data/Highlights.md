@@ -34,6 +34,7 @@
     - Purpose - Realtime streaming for ingesting data
     - Speed - Realtime
     - Difficulty - Developer is responsible for creating consumer and scaling the stream
+    - **A Kinesis data stream stores records from 24 hours by default to a maximum of 168 hours.**
   - [Data Firehose](./KinesisDataFirehose.png)
     - Purpose - Data transfer tool to get information to S3, Redshift, ES or Splunk
     - Speed - Near realtime (within 60 seconds)
