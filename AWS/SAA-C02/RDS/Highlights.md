@@ -14,7 +14,7 @@
 - Not suitable for OLAP. Data warehouse like Redshift is optimized for OLAP
 - Automatic RDS backup can be stored for 35 days at most
 
-### [Multi-AZ RDS](./Multi-AZ%20RDS.png)
+### [Multi-AZ RDS](./Multi-AZ%20RDS.png) (Sync)
 
 - Works only for production instances
 - Creates an exact copy of database in another AZ, not in all AZs
@@ -24,13 +24,13 @@
 - Amazon RDS simply flips the canonical name record (CNAME) for your DB instance to point at the standby, which is in turn promoted to become the new primary.
 - Backups are taken from secondary copy of data
 - All updates or maintenance changes are applied to the secondary database. You then cut over to that secondary copy of your data.
-- If your primary database fails, you'll automatically fail over to the secondary copy. Which of the following is a benefit of using RDS Multi-AZ?
+- If your primary database fails, you'll automatically fail over to the secondary copy.
 
 ### FailOver
 
 - RDS will automatically failover to the standby DB, so that database operations can resume quickly without any administrative intervention or re-configuration
 
-### [Read Replicas](./Read%20Replica.png)
+### [Read Replicas](./Read%20Replica.png) (Async)
 
 - A read-replica is a read-only copy of the primary database (Read-only)
 - Used to scale read performance only and not for disaster management

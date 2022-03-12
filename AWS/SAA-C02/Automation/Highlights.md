@@ -46,6 +46,20 @@
   - Session Manager - Remotely connect and interact with architecture
 - Application of Parameter Store - Store variables which can be loaded at runtime, without keeping secret keys on GitHub or anywhere else
 - Secrets Manager enables you to replace hardcoded credentials in your code (including passwords), with an API call to Secrets Manager to retrieve the secret programmatically. Also, you can configure Secrets Manager to automatically rotate the secret for you according to a schedule that you specify. This enables you to replace long-term secrets with short-term ones, which helps to significantly reduce the risk of compromise.
+- Parameter Store
+  - For Standard parameters, No additional charge for storage and standard throughput. For higher throughput, API interactions cost is $0.05 per 10,000 API calls.
+  - For Advanced parameters, storage cost is $0.05 per advanced parameter per month and API interactions cost is $0.05 per 10,000 API calls.
+  - You can write your own function that updates credentials managed by Parameter Store, and invoking it via a CloudWatch scheduled event or EventBridge.
+  - Cross account access not supported
+  - Standard Parameters can store up to 4096 characters (4KB size) for each entry, and Advanced Parameters can store up to 8KB entries
+  - It doesn’t support cross region replication out of the box
+- Secrets Manager
+  - It is paid. The storage cost is $0.40 per secret per month and API interactions cost is $0.05 per 10,000 API calls
+  - It offers the ability to switch secrets at any given time and can be configured to regularly rotate depending on your requirements
+  - It provides full key rotation integration with few AWS service like RDS, Redshift, DocumentDB. For other services, AWS allows you to write custom key rotation logic using an AWS Lambda function.
+  - Secrets can be accessed from another AWS account. It easier to share the secrets cross-accounts
+  - It can store up to 10KB secret size
+  - It lets you easily replicate your secrets in multiple AWS Regions to support applications spread across those Regions as well as disaster recovery scenarios.
 
 ## Exam Tips
 

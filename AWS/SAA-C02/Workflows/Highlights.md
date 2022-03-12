@@ -53,6 +53,7 @@
   - Security - Allows to easily protect endpoints by a attaching a web application firewall (WAF - Allows rate limiting, blocking specific of address or countries, stop SQL injection attacks, filtering malicious behavior)
   - Stop Abuse - Can easily implement DDoS (Distributed Denial-of-Service) protection and rate limit to curb abuse of endpoints
   - Ease of Use - Easily build out calls that can trigger other AWS services
+  - Amazon API Gateway provides throttling at multiple levels including global and by a service call. Throttling limits can be set for standard rates and bursts. For example, API owners can set a rate limit of 1,000 requests per second for a specific method in their REST APIs, and also configure Amazon API Gateway to handle a burst of 2,000 requests per second for a few seconds.
 
 ## Exam Tips
 

@@ -179,10 +179,13 @@
 - Volumes - A virtual hard disk attached to EC2 instance, where OS can be installed or boot from
 - Snapshots - Exist on S3, snapshot of volume - point-in-time copy of volume (incremental in nature)
 - Location - EBS volumes will be same in AZ as of EC2 instance to which it is attached
+- If the volume is encrypted, it can only be attached to instance types that support Amazon EBS encryption.
 - Resize on the fly - Instance is not required to be stopped or restarted, however volume will be required to extended in OS else OS won't detect
 - Switch volume types on the fly - gp2 volume can be changed to io2 on the fly and instance is not required to be stopped or restarted
 - SSD-Backed Storage Optimized (i2) instances provide more than 365,000 random IOPS.
 - Encryption operations occur on the servers that host EC2 instances, ensuring the security of both data-at-rest and data-in-transit between an instance and its attached EBS storage
+- The AWS Nitro System is the underlying platform for the latest generation of EC2 instances that enables AWS to innovate faster, further reduce the cost of the customers, and deliver added benefits like increased security and new instance types. **Maximum IOPS and throughput are guaranteed only on Instances built on Nitro system provisioned with more than 32000 IOPS**
+- If you to have an EBS volume with up to 64,000 IOPS, you have to launch a Nitro-based EC2 instance.
 
 ### Use Cases
 

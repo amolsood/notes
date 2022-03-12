@@ -111,6 +111,7 @@
   - Lifecycle configuration enables you to specify the lifecycle management of objects in a bucket. The configuration is a set of one or more rules, where each rule defines an action for Amazon S3 to apply to a group of objects. These actions can be classified as follows:
     - Transition actions - In which you define when objects transition to another storage class.
     - Expiration actions – In which you specify when the objects expire. Then Amazon S3 deletes the expired objects on your behalf.
+  - Amazon S3 does not transition objects that are smaller than 128 KB
 
 ### Object Lock
 
@@ -145,6 +146,7 @@
 - **x-amz-server-side-encryption** - Request Header to be included for SSE
   - x-amz-server-side-encryption: AES256
   - x-amz-server-side-encryption: aws:kms
+- When using an AWS KMS-managed customer master key to enable client-side data encryption, you provide an AWS KMS customer master key ID (CMK ID) to AWS. On the other hand, when you use client-side master key for client-side data encryption, your client-side master keys and your unencrypted data are never sent to AWS. It's important that you safely manage your encryption keys because if you lose them, you can't decrypt your data.
 
 ### S3 Performance
 
@@ -210,6 +212,17 @@
 - You can use two types of **VPC endpoints to access Amazon S3**
   - **Gateway endpoints** is a gateway that you specify in your route table to access Amazon S3 from your VPC over the AWS network. There is no additional charge for using gateway endpoints. However, standard charges for data transfer and resource usage still apply.
   - **Interface endpoints** extend the functionality of gateway endpoints by using private IP addresses to route requests to Amazon S3 from within your VPC, on-premises, or from a different AWS Region. You pay an hourly rate for every provisioned Interface endpoint.
+- Use signedURLs
+  - You want to use an RTMP distribution. Signed cookies aren't supported for RTMP distributions
+  - Want to restrict access to individual files, for example, an installation download for your application
+  - Your users are using a client (for example, a custom HTTP client) that doesn't support cookies
+- Use signed cookies (CloudFront)
+  - You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of a website.
+  - You don't want to change your current URLs
+- Amazon Macie is an ML-powered security service that helps you prevent data loss by automatically discovering, classifying, and protecting sensitive data stored in Amazon S3. Amazon Macie uses machine learning to recognize sensitive data such as personally identifiable information (PII) or intellectual property, assigns a business value, and provides visibility into where this data is stored and how it is being used in your organization
+- AWS GuardDuty is just a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads
+- AWS Inspector is basically an automated security assessment service that helps improve the security and compliance of applications deployed on AWS
+- AWS Resource Access Manager (RAM) is a service that enables you to easily and securely share AWS resources with any AWS account or within your AWS Organization. You can share AWS Transit Gateways, Subnets, AWS License Manager configurations, and Amazon Route 53 Resolver rules resources with RAM. RAM is available to you at no additional charge
 
 ### Sample Bucket Policy (To allow make objects public in the BUCKET_NAME bucket)
 

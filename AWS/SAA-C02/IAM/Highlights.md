@@ -32,5 +32,6 @@
 - No permission are granted initially when a new user is created
 - AWS Security Token Service (AWS STS) is the service that you can use to create and provide trusted users with temporary security credentials that can control access to your AWS resources. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html
 - AWS doesn't allow users to add an IAM role to an IAM group
+- You can authenticate to your DB instance using **AWS Identity and Access Management (IAM) database authentication**. IAM database authentication works with MySQL and PostgreSQL. With this authentication method, you don't need to use a password when you connect to a DB instance. Instead, you use an authentication token.
 
 ## [CheatSheet](https://tutorialsdojo.com/aws-identity-and-access-management-iam/#validate-your-knowledge)

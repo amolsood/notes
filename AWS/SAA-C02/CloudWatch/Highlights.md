@@ -47,6 +47,7 @@
 - CloudWatch Logs are not realtime (near realtime). For realtime use Kinesis
 - A period is the length of time associated with a specific Amazon CloudWatch statistic. Each statistic represents an aggregation of the metrics data collected for a specified period of time. Periods are defined in numbers of seconds, and valid values for period are 1, 5, 10, 30, or any multiple of 60. For example, to specify a period of six minutes, use 360 as the period value. You can adjust how the data is aggregated by varying the length of the period. A period can be as short as one second or as long as one day (86,400 seconds). The default value is 60 seconds.
 - You can create an Amazon CloudWatch alarm that monitors an Amazon EC2 instance and automatically reboots the instance.
+- For RDS, Take note that there are certain differences between CloudWatch and Enhanced Monitoring Metrics. CloudWatch gathers metrics about CPU utilization from the hypervisor for a DB instance, and Enhanced Monitoring gathers its metrics from an agent on the instance. Enable Enhanced Monitoring in RDS allows to monitor CPU and Memory for an agent from instance
 
 ### Samples
 
